@@ -1,0 +1,40 @@
+#数据库配置
+mysql:
+  host: '127.0.0.1'
+  port: 3306
+  user: 'root'
+  password: '123456'
+  charset: 'utf-8'
+  db: 'test'
+
+
+#日志文件配置
+logger:
+  name: 'wxj-test'
+  level: 'INFO'
+  format: '%(filename)s-%(lineno)d-%(asctime)s-%(levelname)s-%(message)s'
+  file: 'D:\Interface_automation\log\'
+
+#测试用例
+case:
+  file: 'D:\Interface_automation\case\logger4.xlsx'
+
+#配置文件
+config:
+  path: 'D:\Interface_automation\config\config.yaml'
+
+#测试报告
+report:
+  path: 'D:\Interface_automation\report\'
+
+#邮件配置
+mail:
+  title: "接口自动化测试报告"
+  from_addr: "294927935@qq.com"
+  to_addr: "294927935@qq.com,543402697@qq.com"
+  smtp_server: "smtp.qq.com"
+  port: 465
+  psw: "bvevxezzyihpbied"
+
+
+
