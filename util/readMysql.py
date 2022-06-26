@@ -86,8 +86,8 @@ class MysqlUtil():
         rows = self.mysql_getrows(sql)
         if rows != None:
             for row in rows:
-                for i in row:
-                    return i
+              for i in row:
+                return i
 
 
     def mysql_close(self):
@@ -101,9 +101,11 @@ class MysqlUtil():
 if __name__ == "__main__":
     mysql = MysqlUtil()
     sql = "select * from liuyan;"
-    sql1 = "insert into liuyan1(name,liuyan) values('吴晓佳','测试')"
-    sql2 = "select name from liuyan1 where liuyan = '测试'"
-    mysql.mysql_execute(sql1)
-    mysql.mysql_getrows(sql2)
+    #sql1 = "insert into liuyan(name,liuyan) values('吴晓佳','测试')"
+    sql2 = "select name from liuyan where liuyan = '吴晓佳'"
+    #mysql.mysql_execute(sql1)
+    #mysql.mysql_getrows(sql2)
+    s = mysql.mysql_getstring(sql2)
+    print(s)
 
 

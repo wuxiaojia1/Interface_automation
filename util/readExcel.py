@@ -33,7 +33,6 @@ class ExcelHandler:
         for i in wb[1]:
             #将遍历出来的表头字段加入列表
             header.append(i.value)
-            print(header)
         return header
 
     def read_excel(self,sheet_name):

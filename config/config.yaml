@@ -17,7 +17,8 @@ logger:
 
 #测试用例
 case:
-  file: 'D:\Interface_automation\case\logger4.xlsx'
+  file: 'D:\Interface_automation\case\logger3.xlsx'
+  sheet: "login1"
 
 #配置文件
 config:
@@ -31,7 +32,7 @@ report:
 mail:
   title: "接口自动化测试报告"
   from_addr: "294927935@qq.com"
-  to_addr: "294927935@qq.com,543402697@qq.com"
+  to_addr: "294927935@qq.com"
   smtp_server: "smtp.qq.com"
   port: 465
   psw: "bvevxezzyihpbied"
