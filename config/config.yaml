@@ -17,8 +17,10 @@ logger:
 
 #测试用例
 case:
-  file: 'D:\Interface_automation\case\logger3.xlsx'
-  sheet: "login1"
+  file: 'D:\Interface_automation\case\logger5.xlsx'
+  sheet: login1
+  case_id: 2
+  SQL_assertion:
 
 #配置文件
 config:

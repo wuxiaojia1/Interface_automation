@@ -32,7 +32,6 @@ def  run_case():
         #发送邮件
         send_email(smtpserver, port, sender, psw, receiver, title, report_name)
 
-
 if __name__ == '__main__':
     run_case()
 

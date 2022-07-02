@@ -44,6 +44,8 @@ if __name__ == "__main__":
     # # write_yaml= YamlHandler('../config/config.yaml').write_yaml(data)
     #print(read_data)
     a = yaml_data
-    print(a['config']['path'])
+    for b in a["case"]:
+        print(a["case"][b])
+
 
 
