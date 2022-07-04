@@ -38,10 +38,11 @@ class TestLogin(unittest.TestCase):
         try:
             #断言：预期结果与接口返回结果对比
             self.assertEqual(data['code'], items['expected_result'])
-            mysql = MysqlUtil()
-            print(items['sql'])
-            sql = mysql.mysql_getstring(items['sql'])
-            self.assertEqual(sql,items['sql_result'])
+            if items['sql'] != None:
+                mysql = MysqlUtil()
+                print(items['sql'])
+                sql = mysql.mysql_getstring(items['sql'])
+                self.assertEqual(sql,items['sql_result'])
             logger.info(res)
             logger.info("用例编号case_{} -- {} 测试成功" .format(items['case_id'],items['model_name']))
             result = 'Pass'
@@ -53,7 +54,8 @@ class TestLogin(unittest.TestCase):
             #将接口响应的状态码，写到excel的第8列，即写入返回的状态码
             TestLogin.excel.write_excel(case_file, sheet, items['case_id'] + 1,8, data['code'])
             #将sql返回，写到excel的第11行
-            TestLogin.excel.write_excel(case_file,sheet,items['case_id']+1,11,sql)
+            if items['sql'] != None:
+                TestLogin.excel.write_excel(case_file,sheet,items['case_id']+1,11,sql)
             # 如果断言成功，则在第11行(测试结果)写入Pass,否则，写入Fail
             TestLogin.excel.write_excel(case_file, sheet, items['case_id'] + 1,12, result)
 
