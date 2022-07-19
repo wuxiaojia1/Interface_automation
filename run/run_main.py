@@ -1,5 +1,6 @@
 #coding:utf-8
-
+import logging
+import os.path
 import unittest
 from util.readCase import TestLogin
 from BeautifulReport import BeautifulReport
@@ -17,20 +18,36 @@ def  run_case():
     #定义测试报告名称
     new = time.strftime('%Y-%m-%d_%H_%M_%S')
     report_path = yaml_data['report']['path']
-    report_name = report_path + "接口测试报告_" + new +".html"
-
-    with open(report_name,"wb+") as file:
-        result = BeautifulReport(suit)
-        result.report(description='接口测试报告',filename='接口测试报告_'+ new,report_dir=report_path)
-        #发送邮件报告,定义模板
-        smtpserver = yaml_data['mail']['smtp_server']
-        port = yaml_data['mail']['port']
-        sender = yaml_data['mail']['from_addr']
-        psw = yaml_data['mail']['psw']
-        receiver = yaml_data['mail']['to_addr']
-        title = yaml_data['mail']['title']
-        #发送邮件
-        send_email(smtpserver, port, sender, psw, receiver, title, report_name)
+    if os.path.exists(report_path):
+        os.mkdir(report_path)
+        logging.info("创建目录"+ report_path)
+        report_name = report_path + "接口测试报告_" + new +".html"
+        with open(report_name,"wb+") as file:
+            result = BeautifulReport(suit)
+            result.report(description='接口测试报告',filename='接口测试报告_'+ new,report_dir=report_path)
+            #发送邮件报告,定义模板
+            smtpserver = yaml_data['mail']['smtp_server']
+            port = yaml_data['mail']['port']
+            sender = yaml_data['mail']['from_addr']
+            psw = yaml_data['mail']['psw']
+            receiver = yaml_data['mail']['to_addr']
+            title = yaml_data['mail']['title']
+            #发送邮件
+            send_email(smtpserver, port, sender, psw, receiver, title, report_name)
+    else:
+        report_name = report_path + "接口测试报告_" + new + ".html"
+        with open(report_name, "wb+") as file:
+            result = BeautifulReport(suit)
+            result.report(description='接口测试报告', filename='接口测试报告_' + new, report_dir=report_path)
+            # 发送邮件报告,定义模板
+            smtpserver = yaml_data['mail']['smtp_server']
+            port = yaml_data['mail']['port']
+            sender = yaml_data['mail']['from_addr']
+            psw = yaml_data['mail']['psw']
+            receiver = yaml_data['mail']['to_addr']
+            title = yaml_data['mail']['title']
+            # 发送邮件
+            send_email(smtpserver, port, sender, psw, receiver, title, report_name)
 
 if __name__ == '__main__':
     run_case()

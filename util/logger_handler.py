@@ -33,10 +33,19 @@ class LoggerHandler(logging.Logger):
         stream_handler.setFormatter(fmt)
         self.addHandler(stream_handler)
 #从yaml配置文件中读取loggin相关配置
-logger = LoggerHandler(name=yaml_data['logger']['name'],
-                       level=yaml_data['logger']['level'],
-                       file=yaml_data['logger']['file'],
-                       format=yaml_data['logger']['format'])
+logfile = yaml_data['logger']['file']
+if  os.path.exists(logfile):
+    os.mkdir(logfile)
+    logging.info('创建日志目录' + logfile)
+    logger = LoggerHandler(name=yaml_data['logger']['name'],
+                           level=yaml_data['logger']['level'],
+                           file=yaml_data['logger']['file'],
+                           format=yaml_data['logger']['format'])
+else:
+    logger = LoggerHandler(name=yaml_data['logger']['name'],
+                           level=yaml_data['logger']['level'],
+                           file=yaml_data['logger']['file'],
+                           format=yaml_data['logger']['format'])
 if __name__ == '__main__':
     logger.debug('哈哈')
     logging.info('你是')

@@ -18,8 +18,8 @@ sheet = yaml_data['case']['sheet']
 class TestLogin(unittest.TestCase):
     # 调用读取测试用例函数
     case_data = caseConig()
-    excel = ExcelHandler(case_file)
-    print(case_data)
+    #excel = ExcelHandler(case_file)
+    #print(case_data)
     def setUp(self):
         # 请求类实例化
         self.req = RequestHandler()
