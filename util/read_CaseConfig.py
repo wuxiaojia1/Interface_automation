@@ -13,7 +13,7 @@ def caseConig():
     #判断测试用例是否为空
     if case_file == None:
         logger.error("测试用例目录不能为空，请配置好测试用例目录")
-    #如果只有测试用例目录不为空，获取该文件的所有sheet
+    #如果只有case_file存在值，判断是否为目录，获取文件中所有sheet
     elif case_file != None and excel_sheet == None and case_id == None:
         if os.path.isdir(case_file):
             dir_list = os.listdir(case_file)
@@ -32,7 +32,7 @@ def caseConig():
             excel = ExcelHandler(case_file)
             case_data = excel.all_sheet_call()
             return case_data
-    #如果目录和sheet是否为空
+    #如果case_file和sheet不为空，判断case_file是否为目录，获取所有case_file文件中sheet
     elif case_file !=None and excel_sheet != None and case_id  == None:
         if os.path.isdir(case_file):
             dir_list = os.listdir(case_file)
@@ -49,6 +49,7 @@ def caseConig():
             excel = ExcelHandler(case_file)
             case_data = excel.all_sheet_call(excel_sheet)
             return case_data
+    # 如果case_file和case_id不为空，判断case_file是否为目录，获取所有case_file文件所有sheet的case_id
     elif case_file !=None and excel_sheet == None and case_id !=None:
         if os.path.isdir(case_file):
             dir_list = os.listdir(case_file)
@@ -65,6 +66,7 @@ def caseConig():
             excel = ExcelHandler(case_file)
             case_data =  excel.all_sheet_call(case_id=case_id)
             return case_data
+    # 如果case_file和case_id不为空，判断case_file是否为目录，获取所有case_file文件指定的sheet的case_id
     elif case_file !=None and excel_sheet != None and case_id !=None:
         if os.path.isdir(case_file):
             dir_list = os.listdir(case_file)
