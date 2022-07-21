@@ -34,7 +34,7 @@ class LoggerHandler(logging.Logger):
         self.addHandler(stream_handler)
 #从yaml配置文件中读取loggin相关配置
 logfile = yaml_data['logger']['file']
-if  os.path.exists(logfile):
+if os.path.exists(logfile):
     os.mkdir(logfile)
     logging.info('创建日志目录' + logfile)
     logger = LoggerHandler(name=yaml_data['logger']['name'],
